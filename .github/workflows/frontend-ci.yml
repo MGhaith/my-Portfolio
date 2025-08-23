@@ -23,7 +23,7 @@ jobs:
         with:
           role-to-assume: arn:aws:iam::075091538636:role/github-oidc-terraform
           aws-region: us-east-1
-          
+
       - name: Terraform Init
         working-directory: ./infra
         run: terraform init
@@ -45,7 +45,7 @@ jobs:
         uses: aws-actions/configure-aws-credentials@v3
         with:
           role-to-assume: arn:aws:iam::075091538636:role/GitHubActionsFrontendRole
-          aws-region: eu-central-1
+          aws-region: us-east-1
 
       - name: Sync build to S3
         run: |

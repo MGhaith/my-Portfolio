@@ -51,7 +51,7 @@ module "github_oidc_frontend" {
   source                     = "./modules/iam_github_oidc"
   role_name                  = "GitHubActionsFrontendRole"
   github_owner               = "MGhaith"
-  github_repo                = "my-portfolio"
+  github_repo                = "my-Portfolio"
   allowed_ref                = "refs/heads/main"
   site_bucket_name           = module.cdn_frontend.bucket_name
   cloudfront_distribution_id = module.cdn_frontend.cloudfront_distribution_id

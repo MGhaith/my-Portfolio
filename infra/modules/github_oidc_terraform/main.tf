@@ -19,7 +19,7 @@ resource "aws_iam_role" "this" {
       Action = "sts:AssumeRoleWithWebIdentity"
       Condition = {
         StringLike = {
-          "token.actions.githubusercontent.com:sub" = "repo:<your-org>/<your-repo>:*"
+          "token.actions.githubusercontent.com:sub" = "repo:MGhaith/my-Portfolio:*"
         }
       }
     }]

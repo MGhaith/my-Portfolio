@@ -8,17 +8,6 @@ provider "aws" {
   alias  = "us"
 }
 
-module "cdn_frontend" {
-  providers = {
-    aws.us = aws.us
-    aws.eu = aws.eu
-  }
-  source              = "./modules/cdn_frontend"
-  domain_name         = "ghaith-magherbi.com"
-  bucket_name         = "ghaith-magherbi.com"
-  acm_certificate_arn = "arn:aws:acm:us-east-1:075091538636:certificate/8efdcd14-f7c3-4d6c-8e20-43d81e5cdb3d"
-}
-
 resource "aws_route53_record" "root" {
   zone_id = "Z0026678267UFMSA9SLXO"
   name    = "ghaith-magherbi.com"
@@ -41,4 +30,26 @@ resource "aws_route53_record" "root_ipv6" {
     zone_id                = module.cdn_frontend.cloudfront_zone_id
     evaluate_target_health = false
   }
+}
+
+
+module "cdn_frontend" {
+  providers = {
+    aws.us = aws.us
+    aws.eu = aws.eu
+  }
+  source              = "./modules/cdn_frontend"
+  domain_name         = "ghaith-magherbi.com"
+  bucket_name         = "ghaith-magherbi.com"
+  acm_certificate_arn = "arn:aws:acm:us-east-1:075091538636:certificate/8efdcd14-f7c3-4d6c-8e20-43d81e5cdb3d"
+}
+
+module "github_oidc_frontend" {
+  source                     = "./modules/iam_github_oidc"
+  role_name                  = "GitHubActionsFrontendRole"
+  github_owner               = "MGhaith"
+  github_repo                = "my-portfolio"
+  allowed_ref                = "refs/heads/main"
+  site_bucket_name           = module.cdn_frontend.bucket_name
+  cloudfront_distribution_id = module.cdn_frontend.cloudfront_distribution_id
 }

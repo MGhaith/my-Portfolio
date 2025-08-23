@@ -16,7 +16,7 @@ jobs:
         uses: actions/checkout@v4
 
       - name: Setup Terraform
-        uses: hashicorp/setup-terraform@v3
+        uses: hashicorp/setup-terraform@v4
 
       - name: Terraform Init
         working-directory: ./infra
@@ -26,8 +26,15 @@ jobs:
         id: tf
         working-directory: ./infra
         run: |
-          terraform output -json > tf_outputs.json
-          echo "TF_OUTPUTS=$(cat tf_outputs.json)" >> $GITHUB_ENV
+          echo "TF_ROLE_ARN=$(terraform output -raw terraform_role_arn)" >> $GITHUB_ENV
+          echo "BUCKET_NAME=$(terraform output -raw site_bucket_name)" >> $GITHUB_ENV
+          echo "CLOUDFRONT_ID=$(terraform output -raw cloudfront_distribution_id)" >> $GITHUB_ENV
+
+      - name: Configure AWS credentials via OIDC
+        uses: aws-actions/configure-aws-credentials@v4
+        with:
+          role-to-assume: ${{ env.TF_ROLE_ARN }}
+          aws-region: us-east-1
 
       - name: Set up Node.js
         uses: actions/setup-node@v4

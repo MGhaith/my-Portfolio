@@ -32,6 +32,9 @@ resource "aws_route53_record" "root_ipv6" {
   }
 }
 
+module "github_oidc_terraform" {
+  source = "./modules/github_oidc_terraform"
+}
 
 module "cdn_frontend" {
   providers = {

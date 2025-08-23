@@ -34,7 +34,7 @@ data "aws_iam_policy_document" "assume_role" {
     condition {
       test     = "StringLike"
       variable = "token.actions.githubusercontent.com:sub"
-      values   = ["repo:${var.github_owner}/${var.github_repo}:${var.allowed_ref}"]
+      values   = ["repo:${var.github_owner}/${var.github_repo}:ref:${var.allowed_ref}"]
     }
   }
 }

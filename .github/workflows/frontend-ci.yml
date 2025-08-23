@@ -2,13 +2,15 @@ name: Frontend CI/CD
 
 on:
   push:
-    branches: [ "main" ]
+    branches: [ "ci-testing" ]
+  pull_request:      
+  workflow_dispatch:
 
 jobs:
   build-deploy:
     runs-on: ubuntu-latest
     permissions:
-      id-token: write      # Required for OIDC
+      id-token: write
       contents: read
 
     steps:

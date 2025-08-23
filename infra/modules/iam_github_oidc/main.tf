@@ -14,7 +14,7 @@ resource "aws_iam_openid_connect_provider" "github" {
   client_id_list  = ["sts.amazonaws.com"]
 }
 
-# 2) IAM role trusted by GitHub OIDC (restricted to your repo + branch)
+# 2) IAM role trusted by GitHub OIDC
 data "aws_iam_policy_document" "assume_role" {
   statement {
     effect = "Allow"

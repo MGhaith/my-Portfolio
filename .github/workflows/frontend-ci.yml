@@ -1,0 +1,59 @@
+name: Frontend CI/CD
+
+on:
+  push:
+    branches: [ "main" ]
+
+jobs:
+  build-deploy:
+    runs-on: ubuntu-latest
+    permissions:
+      id-token: write      # Required for OIDC
+      contents: read
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Setup Terraform
+        uses: hashicorp/setup-terraform@v3
+
+      - name: Terraform Init
+        working-directory: ./infra
+        run: terraform init
+
+      - name: Terraform Output
+        id: tf
+        working-directory: ./infra
+        run: |
+          terraform output -json > tf_outputs.json
+          echo "TF_OUTPUTS=$(cat tf_outputs.json)" >> $GITHUB_ENV
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: "24.6.0"
+
+      - name: Install dependencies
+        run: npm ci
+        working-directory: ./frontend
+
+      - name: Build React app
+        run: npm run build
+        working-directory: ./frontend
+
+      - name: Configure AWS credentials via OIDC
+        uses: aws-actions/configure-aws-credentials@v3
+        with:
+          role-to-assume: arn:aws:iam::123456789012:role/GitHubActionsFrontendRole
+          aws-region: eu-central-1
+
+      - name: Sync build to S3
+        run: |
+          aws s3 sync build/ s3://ghaith-magherbi.com/ --delete
+      
+      - name: Invalidate CloudFront cache
+        run: |
+          aws cloudfront create-invalidation \
+            --distribution-id E2ID0F0L5RDMX8 \
+            --paths "/*"

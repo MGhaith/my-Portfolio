@@ -1,3 +1,12 @@
+terraform {
+  required_providers {
+    aws = {
+      source  = "hashicorp/aws"
+      version = ">= 5.0"
+    }
+  }
+}
+
 variable "domain_name" {}
 variable "bucket_name" {}
 variable "acm_certificate_arn" {}
@@ -141,4 +150,8 @@ output "cloudfront_domain" {
 
 output "cloudfront_zone_id" {
   value = aws_cloudfront_distribution.cdn.hosted_zone_id
+}
+
+output "cloudfront_distribution_id" {
+  value = aws_cloudfront_distribution.cdn.id
 }

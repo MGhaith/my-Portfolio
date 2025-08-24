@@ -29,7 +29,14 @@ def lambda_handler(event, context):
             Message={
                 "Subject": {"Data": f"New contact from {body['name']}"},
                 "Body": {
-                    "Text": {"Data": f"Name: {body['name']}\nFrom: {body['email']}\nMessage: {body['message']}\nTime: {body['timestamp']}"}
+                    "Text": {
+                        "Data": (
+                            f"Name: {body['name']}\n"
+                            f"From: {body['email']}\n"
+                            f"Message: {body['message']}\n"
+                            f"Time: {datetime.utcnow().isoformat()}"
+                        )
+                    }
                 }
             }
         )

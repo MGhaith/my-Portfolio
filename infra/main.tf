@@ -61,3 +61,16 @@ module "data" {
   source = "./modules/data"
   region = "eu-central-1"
 }
+
+module "api_backend" {
+  providers = {
+    aws.eu = aws.eu
+  }
+
+  source = "./modules/api_backend"
+
+  projects_table_name = "PortfolioProjectsTable"
+  contacts_table_name = "PortfolioContactsTable"
+  ses_email           = "contact@ghaith-magherbi.com"
+  acm_certificate_arn = "arn:aws:acm:eu-central-1:075091538636:certificate/c0481aca-c795-4c03-a7c4-52320d6bbee0" # Create a new SSL Cert for api subdomain in same region as API Gateway
+}

@@ -162,6 +162,15 @@ resource "aws_lambda_function" "getProjects" {
 resource "aws_apigatewayv2_api" "http_api" {
   name          = "portfolio-api"
   protocol_type = "HTTP"
+
+  cors_configuration {
+    allow_origins = [
+      "https://ghaith-magherbi.com",
+      "https://www.ghaith-magherbi.com"
+    ]
+    allow_methods = ["GET", "POST", "OPTIONS"]
+    allow_headers = ["content-type"]
+  }
 }
 
 # API Gateway Stage

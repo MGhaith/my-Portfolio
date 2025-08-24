@@ -56,3 +56,8 @@ module "github_oidc_frontend" {
   site_bucket_name           = module.cdn_frontend.bucket_name
   cloudfront_distribution_id = module.cdn_frontend.cloudfront_distribution_id
 }
+
+module "data" {
+  source = "./modules/data"
+  region = "eu-central-1"
+}

@@ -1,12 +1,12 @@
+import ProjectsList from "./components/ProjectsList";
+import ContactForm from "./components/ContactForm";
 
-
-function App() {
+export default function App() {
   return (
-    <div style={{ fontFamily: "sans-serif", textAlign: "center", marginTop: "5rem" }}>
-      <h1>👋 Hi, I’m Ghaith</h1>
-      <p>Welcome to my cloud-native portfolio!</p>
+    <div>
+      <h1>My Portfolio</h1>
+      <ProjectsList />
+      <ContactForm />
     </div>
   );
 }
-
-export default App;

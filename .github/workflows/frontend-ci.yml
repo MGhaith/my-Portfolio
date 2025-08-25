@@ -20,7 +20,7 @@ jobs:
       - name: Setup Terraform
         uses: hashicorp/setup-terraform@v3
 
-      - name: Configure AWS credentials via OIDC
+      - name: Configure AWS credentials via OIDC for Terraform
         uses: aws-actions/configure-aws-credentials@v4
         with:
           role-to-assume: arn:aws:iam::075091538636:role/github-oidc-terraform
@@ -51,7 +51,7 @@ jobs:
         run: npm run build
         working-directory: ./frontend
 
-      - name: Configure AWS credentials via OIDC
+      - name: Configure AWS credentials via OIDC for Frontend
         uses: aws-actions/configure-aws-credentials@v4
         with:
           role-to-assume: arn:aws:iam::075091538636:role/GitHubActionsFrontendRole

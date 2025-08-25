@@ -4,7 +4,7 @@ import ContactForm from "./components/ContactForm";
 export default function App() {
   return (
     <div>
-      <h1>My Portfolio</h1>
+      <h1>My Personal Portfolio</h1>
       <ProjectsList />
       <ContactForm />
     </div>

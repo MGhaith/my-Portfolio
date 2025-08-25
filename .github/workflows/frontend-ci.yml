@@ -51,6 +51,12 @@ jobs:
         run: npm run build
         working-directory: ./frontend
 
+      - name: Configure AWS credentials via OIDC
+        uses: aws-actions/configure-aws-credentials@v4
+        with:
+          role-to-assume: arn:aws:iam::075091538636:role/GitHubActionsFrontendRole
+          aws-region: us-east-1
+
       - name: Sync build to S3
         run: |
           aws s3 sync ./frontend/dist/ s3://ghaith-magherbi.com/ --delete

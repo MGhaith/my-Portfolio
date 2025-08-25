@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { submitContact } from "../api/api";
-import type { ContactForm as ContactFormType } from "../api/api";
+import type { ContactFormData as ContactFormType } from "../api/types";
 import type { ChangeEvent, FormEvent } from "react";
 
 export default function ContactForm() {

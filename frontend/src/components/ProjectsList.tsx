@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { getProjects } from "../api/api.ts";
-import type { Project } from "../api/api.ts";
+import type { Project } from "../api/types.ts";
 
 export default function ProjectsList() {
   const [projects, setProjects] = useState<Project[]>([]);

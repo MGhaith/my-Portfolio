@@ -31,14 +31,19 @@ export default function ContactForm() {
     <div>
       <h2>Contact</h2>
       <form onSubmit={handleSubmit}>
+        <label htmlFor="name">Name</label>
         <input
+          id="name"
           name="name"
           placeholder="Name"
           value={form.name}
           onChange={handleChange}
           required
         />
+
+        <label htmlFor="email">Email</label>
         <input
+          id="email"
           name="email"
           type="email"
           placeholder="Email"
@@ -46,13 +51,17 @@ export default function ContactForm() {
           onChange={handleChange}
           required
         />
+
+        <label htmlFor="message">Message</label>
         <textarea
+          id="message"
           name="message"
           placeholder="Message"
           value={form.message}
           onChange={handleChange}
           required
         />
+
         <button type="submit">Send</button>
       </form>
       <p>{status}</p>

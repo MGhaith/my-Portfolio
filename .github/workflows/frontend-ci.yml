@@ -3,43 +3,40 @@ name: Deploy Frontend
 on:
   push:
     branches: [ "main" ]
-  pull_request:      
   workflow_dispatch:
 
 jobs:
-  build-deploy:
+  terraform:
     runs-on: ubuntu-latest
     permissions:
       id-token: write
       contents: read
-
     steps:
-      - name: Checkout code
-        uses: actions/checkout@v4
+      - uses: actions/checkout@v4
+      - uses: hashicorp/setup-terraform@v3
 
-      - name: Setup Terraform
-        uses: hashicorp/setup-terraform@v3
-
-      - name: Configure AWS credentials via OIDC for Terraform
+      - name: Configure AWS credentials via OIDC (Terraform)
         uses: aws-actions/configure-aws-credentials@v4
         with:
           role-to-assume: arn:aws:iam::075091538636:role/github-oidc-terraform
           aws-region: us-east-1
 
-      - name: Terraform Init
+      - run: terraform init
         working-directory: ./infra
-        run: terraform init
-
-      - name: Terraform Plan
+      - run: terraform plan -out=tfplan
         working-directory: ./infra
-        run: terraform plan -out=tfplan
-
-      - name: Terraform Apply
+      - run: terraform apply -auto-approve tfplan
         working-directory: ./infra
-        run: terraform apply -auto-approve tfplan
 
-      - name: Set up Node.js
-        uses: actions/setup-node@v4
+  frontend:
+    runs-on: ubuntu-latest
+    needs: terraform
+    permissions:
+      id-token: write
+      contents: read
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
         with:
           node-version: "24.6.0"
 
@@ -51,18 +48,16 @@ jobs:
         run: npm run build
         working-directory: ./frontend
 
-      - name: Configure AWS credentials via OIDC for Frontend
+      - name: Configure AWS credentials via OIDC (Frontend)
         uses: aws-actions/configure-aws-credentials@v4
         with:
           role-to-assume: arn:aws:iam::075091538636:role/GitHubActionsFrontendRole
           aws-region: us-east-1
 
       - name: Sync build to S3
-        run: |
-          aws s3 sync ./frontend/dist/ s3://ghaith-magherbi.com/ --delete
-      
+        run: aws s3 sync ./frontend/dist/ s3://ghaith-magherbi.com/ --delete
+
       - name: Invalidate CloudFront cache
-        run: |
-          aws cloudfront create-invalidation \
-            --distribution-id E2ID0F0L5RDMX8 \
-            --paths "/*"
+        run: aws cloudfront create-invalidation \
+          --distribution-id E2ID0F0L5RDMX8 \
+          --paths "/*"

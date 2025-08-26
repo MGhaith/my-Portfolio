@@ -3,6 +3,9 @@ export interface Project {
   title: string;
   description: string;
   link: string;
+  github?: string;
+  categories?: string[];
+  technologies?: string[];
 }
 
 export interface ContactFormData {

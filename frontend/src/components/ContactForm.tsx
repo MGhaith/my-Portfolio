@@ -2,6 +2,7 @@ import { useState } from "react";
 import { submitContact } from "../api/api";
 import type { ContactFormData as ContactFormType } from "../api/types";
 import type { ChangeEvent, FormEvent } from "react";
+import { Button } from "@/components/ui/button"
 
 export default function ContactForm() {
   const [form, setForm] = useState<ContactFormType>({
@@ -62,7 +63,7 @@ export default function ContactForm() {
           required
         />
 
-        <button type="submit">Send</button>
+        <Button type="submit">Send</Button>
       </form>
       <p>{status}</p>
     </div>

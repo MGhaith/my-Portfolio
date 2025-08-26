@@ -33,15 +33,15 @@ export default function Blog() {
   ];
 
   return (
-    <div className="container mx-auto p-4 py-16 space-y-8">
-      <h1 className="text-4xl font-bold text-center">Blog</h1>
-      <p className="text-center text-gray-500 dark:text-gray-400 max-w-2xl mx-auto">
+    <div className="container mx-auto p-4 py-16 space-y-8 max-w-4xl">
+      <h1 className="text-4xl font-bold text-center animate-in fade-in duration-700">Blog</h1>
+      <p className="text-center text-gray-500 dark:text-gray-400 max-w-2xl mx-auto animate-in fade-in duration-700 delay-150">
         Thoughts, tutorials, and insights on cloud engineering, DevOps practices, and modern infrastructure.
       </p>
       
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+      <div className="flex flex-col space-y-6 animate-in fade-in duration-700 delay-300">
         {blogPosts.map((post) => (
-          <Card key={post.id} className="flex flex-col h-full">
+          <Card key={post.id} className="flex flex-col h-full hover:shadow-lg transition-all duration-300 hover:scale-[1.01]">
             <CardHeader>
               <CardTitle>{post.title}</CardTitle>
               <CardDescription className="flex justify-between">

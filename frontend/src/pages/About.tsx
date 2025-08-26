@@ -30,23 +30,23 @@ export default function About() {
 
   return (
     <div className="container mx-auto p-4 py-16 space-y-12">
-      <section className="space-y-6">
+      {/* About Me Section */}
+      <section className="max-w-3xl mx-auto space-y-6 animate-in fade-in duration-700">
         <h1 className="text-4xl font-bold text-center">About Me</h1>
-        <div className="max-w-3xl mx-auto text-lg">
-          <p className="mb-4">
-            I'm a passionate Cloud/DevOps Engineer with expertise in designing, implementing, and managing cloud infrastructure. 
-            My focus is on creating scalable, secure, and automated solutions that enable teams to deliver software efficiently.
+        <div className="prose dark:prose-invert mx-auto">
+          <p>
+            I'm a Cloud & DevOps Engineer with a passion for building scalable, reliable infrastructure and automating deployment processes. With expertise in AWS, Terraform, Docker, and Kubernetes, I help organizations implement modern DevOps practices and cloud-native solutions.
           </p>
           <p>
-            With a strong background in both development and operations, I bridge the gap between these disciplines to 
-            implement DevOps practices that improve deployment frequency, reduce time to market, and enhance system reliability.
+            My approach combines technical expertise with a focus on business outcomes, ensuring that infrastructure decisions support organizational goals. I believe in infrastructure as code, continuous integration/deployment, and monitoring as core principles of modern operations.
           </p>
         </div>
       </section>
 
-      <section className="space-y-6">
+      {/* Skills Section */}
+      <section className="max-w-3xl mx-auto space-y-6 animate-in fade-in duration-700 delay-300">
         <h2 className="text-3xl font-bold text-center">Skills & Expertise</h2>
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
           {skills.map((skillGroup) => (
             <Card key={skillGroup.category}>
               <CardHeader>

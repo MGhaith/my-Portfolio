@@ -6,8 +6,12 @@ export default function Home() {
   return (
     <div className="container mx-auto p-4 space-y-16">
       <HeroSection />
-      <ProjectsList />
-      <ContactForm />
+      <div className="animate-in fade-in slide-in-from-bottom duration-700 delay-700">
+        <ProjectsList />
+      </div>
+      <div className="animate-in fade-in slide-in-from-bottom duration-700 delay-1000">
+        <ContactForm />
+      </div>
     </div>
   );
 }

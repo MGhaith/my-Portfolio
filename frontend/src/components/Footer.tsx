@@ -5,7 +5,7 @@ export default function Footer() {
     <footer className="border-t py-6 md:py-8">
       <div className="container mx-auto flex flex-col items-center justify-center gap-4">
         <p className="text-center text-sm text-gray-500 dark:text-gray-400">
-          © {new Date().getFullYear()} Ghaith Magherbi. All rights reserved.
+          © {new Date().getFullYear()} <span className="text-primary">Ghaith Magherbi</span>. All rights reserved.
         </p>
         <div className="flex gap-4">
           <a 
@@ -26,7 +26,7 @@ export default function Footer() {
             <Linkedin className="h-5 w-5" />
             <span className="sr-only">LinkedIn</span>
           </a>
-          <a 
+          {/*<a 
             href="https://twitter.com/yourusername" 
             target="_blank" 
             rel="noopener noreferrer"
@@ -34,7 +34,7 @@ export default function Footer() {
           >
             <Twitter className="h-5 w-5" />
             <span className="sr-only">Twitter</span>
-          </a>
+          </a>*/}
           <a 
             href="mailto:contact@ghaith-magherbi.com" 
             className="text-gray-500 hover:text-gray-700 dark:text-gray-400 dark:hover:text-gray-300"

@@ -8,16 +8,13 @@ import Projects from "./pages/Projects";
 import NotFound from "./pages/NotFound";
 import { ThemeProvider } from "@/components/theme-provider";
 import Footer from "./components/Footer";
+import { Toaster } from "sonner";
 
 export default function App() {
   return (
     <BrowserRouter>
       <ThemeProvider defaultTheme="dark" storageKey="vite-ui-theme">
         <div className="flex flex-col min-h-screen relative overflow-hidden">
-          {/* Animated background pattern */}
-          <div className="absolute inset-0 -z-10 overflow-hidden">
-            <div className="pattern-grid opacity-10"></div>
-          </div>
           <Navbar />
           <main className="flex-grow pt-16">
             <Routes>
@@ -30,6 +27,7 @@ export default function App() {
             </Routes>
           </main>
           <Footer />
+          <Toaster position="top-center" richColors />
         </div>
       </ThemeProvider>
     </BrowserRouter>

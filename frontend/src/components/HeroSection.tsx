@@ -7,6 +7,13 @@ export default function HeroSection() {
     <section className="py-20 md:py-28">
       <div className="container px-4 md:px-6">
         <div className="flex flex-col items-center space-y-4 text-center">
+          <div className="animate-in fade-in zoom-in duration-700">
+            <img
+              src="https://avatars.githubusercontent.com/u/57289554?v=4"
+              alt="Ghaith Magherbi"
+              className="w-32 h-32 md:w-64 md:h-64 rounded-full object-cover"
+            />
+          </div>
           <div className="space-y-2">
             <h1 className="text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl lg:text-6xl/none animate-in fade-in zoom-in duration-700">
               Ghaith Magherbi

@@ -7,6 +7,7 @@ import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
 import { Mail, Send } from "lucide-react";
+import { toast } from "sonner";
 
 export default function ContactForm() {
   const [form, setForm] = useState<ContactFormType>({
@@ -46,20 +47,39 @@ export default function ContactForm() {
     }
   };
 
+  // In the handleSubmit function
   const handleSubmit = async (e: FormEvent) => {
     e.preventDefault();
     
     if (!validateForm()) {
+      toast.error("Please fix the errors in the form", {
+        description: "All fields are required to send a message",
+        icon: "🚫"
+      });
       return;
     }
     
     setStatus("Sending...");
+    const loadingToast = toast.loading("Sending your message...", {
+      description: "Please wait while we process your request"
+    });
+    
     try {
       await submitContact(form);
+      toast.dismiss(loadingToast);
       setStatus("Message sent!");
+      toast.success("Message sent successfully!", {
+        description: "Thank you for reaching out. I'll get back to you soon!",
+        icon: "✅"
+      });
       setForm({ name: "", email: "", message: "" });
-    } catch {
+    } catch (error) {
+      toast.dismiss(loadingToast);
       setStatus("Failed to send message.");
+      toast.error("Failed to send message", {
+        description: "Please try again later or contact me directly.",
+        icon: "❌"
+      });
     }
   };
 

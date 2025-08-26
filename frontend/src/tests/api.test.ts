@@ -7,7 +7,7 @@ global.fetch = vi.fn() as unknown as typeof fetch;
 
 describe("API functions", () => {
   it("getProjects returns project list", async () => {
-    const mockProjects: Project[] = [{ id: "1", title: "Test", description: "Desc", link: "#" }];
+    const mockProjects: Project[] = [{ id: "1", title: "Test", description: "Desc", content: "Content", link: "#" }]; 
 
     // @ts-ignore
     (global.fetch as unknown as vi.Mock).mockResolvedValueOnce({

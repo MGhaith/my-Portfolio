@@ -5,7 +5,7 @@ import { ScrollArea } from "@/components/ui/scroll-area";
 import { Separator } from "@/components/ui/separator";
 import { Skeleton } from "@/components/ui/skeleton";
 import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from "@/components/ui/tooltip";
-import { ExternalLink, Github, Info } from "lucide-react";
+import { ExternalLink, Github } from "lucide-react";
 import { useEffect, useState } from "react";
 import { getProjects } from "../api/api.ts";
 import type { Project } from "../api/types.ts";

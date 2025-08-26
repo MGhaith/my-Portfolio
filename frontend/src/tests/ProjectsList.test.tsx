@@ -3,7 +3,7 @@ import { vi } from "vitest";
 import ProjectsList from "../components/ProjectsList";
 import * as api from "../api/api";
 
-vi.spyOn(api, "getProjects").mockResolvedValue([{ id: "1", title: "Test", description: "Desc", link: "#" }]);
+vi.spyOn(api, "getProjects").mockResolvedValue([{ id: "1", title: "Test", description: "Desc", content: "Content", link: "#" }]);
 
 test("renders projects", async () => {
   render(<ProjectsList />);

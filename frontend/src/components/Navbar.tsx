@@ -50,7 +50,8 @@ const Navbar: FC = () => {
             <div className="px-2 pt-2 pb-3 space-y-1">
               <MobileNavLink href="/" text="Home" isActive={location.pathname === '/'} onClick={() => setIsOpen(false)} />
               <MobileNavLink href="/about" text="About" isActive={location.pathname === '/about'} onClick={() => setIsOpen(false)} />
-              <MobileNavLink href="/blog" text="Blog" isActive={location.pathname === '/blog'} onClick={() => setIsOpen(false)} />
+              <MobileNavLink href="/projects" text="Projects" isActive={location.pathname === '/projects'} onClick={() => setIsOpen(false)} />
+              {/*<MobileNavLink href="/blog" text="Blog" isActive={location.pathname === '/blog'} onClick={() => setIsOpen(false)} />*/}
               <MobileNavLink href="/resume" text="Resume" isActive={location.pathname === '/resume'} onClick={() => setIsOpen(false)} />
             </div>
           </div>

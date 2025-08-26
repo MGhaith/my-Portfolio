@@ -23,7 +23,8 @@ const Navbar: FC = () => {
             <div className="flex space-x-6">
               <NavLink href="/" text="Home" isActive={location.pathname === '/'} />
               <NavLink href="/about" text="About" isActive={location.pathname === '/about'} />
-              <NavLink href="/blog" text="Blog" isActive={location.pathname === '/blog'} />
+              <NavLink href="/projects" text="Projects" isActive={location.pathname === '/projects'} />
+              {/*<NavLink href="/blog" text="Blog" isActive={location.pathname === '/blog'} />*/}
               <NavLink href="/resume" text="Resume" isActive={location.pathname === '/resume'} />
             </div>
             <ModeToggle />

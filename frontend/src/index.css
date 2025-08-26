@@ -119,3 +119,38 @@
     @apply bg-background text-foreground;
   }
 }
+
+/* Animated background pattern */
+.pattern-grid {
+  background-image: 
+    linear-gradient(to right, var(--primary)/10% 1px, transparent 1px),
+    linear-gradient(to bottom, var(--primary)/10% 1px, transparent 1px);
+  background-size: 40px 40px;
+  width: 200%;
+  height: 200%;
+  animation: pattern-move 20s linear infinite;
+  transform-origin: center;
+}
+
+@keyframes pattern-move {
+  0% {
+    transform: rotate(0deg) scale(1);
+  }
+  50% {
+    transform: rotate(5deg) scale(1.1);
+  }
+  100% {
+    transform: rotate(0deg) scale(1);
+  }
+}
+
+/* Hide scrollbar for Chrome, Safari and Opera */
+html::-webkit-scrollbar {
+  display: none;
+}
+
+/* Hide scrollbar for IE, Edge and Firefox */
+html {
+  -ms-overflow-style: none;  /* IE and Edge */
+  scrollbar-width: none;  /* Firefox */
+}

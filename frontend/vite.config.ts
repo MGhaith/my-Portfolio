@@ -1,11 +1,18 @@
 import { defineConfig } from 'vite';
 import react from '@vitejs/plugin-react';
+import path from "path"
 import { resolve as _resolve } from 'path';
 import { defineConfig as _defineVitestConfig } from 'vitest/config';
+import tailwindcss from '@tailwindcss/vite';
 
 // https://vite.dev/config/
 export default defineConfig({
-  plugins: [react()],
+  plugins: [react(), tailwindcss()],
+  resolve: {
+    alias: {
+      "@": path.resolve(__dirname, "./src"),
+    },
+  },
 
   test: {
     globals: true,

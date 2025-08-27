@@ -13,7 +13,7 @@ import { Toaster } from "sonner";
 export default function App() {
   return (
     <BrowserRouter>
-      <ThemeProvider defaultTheme="dark" storageKey="vite-ui-theme">
+      <ThemeProvider defaultTheme="system" storageKey="vite-ui-theme">
         <div className="flex flex-col min-h-screen relative overflow-hidden">
           <Navbar />
           <main className="flex-grow pt-16">

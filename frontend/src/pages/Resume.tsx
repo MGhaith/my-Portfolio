@@ -66,10 +66,12 @@ export default function Resume() {
               <TooltipProvider>
                 <Tooltip>
                   <TooltipTrigger asChild>
-                    <Button className="h-11 px-6 bg-primary hover:bg-primary/90">
-                      <Download className="mr-2 h-4 w-4" />
-                      Download Resume (PDF)
-                    </Button>
+                    <a href="https://drive.google.com/uc?export=download&id=1_J3bjWs3Z4MtbO7zw1rG_XQY43tJA-NR" download>
+                      <Button className="h-11 px-6 bg-primary hover:bg-primary/90">
+                        <Download className="mr-2 h-4 w-4" />
+                        Download Resume (PDF)
+                      </Button>
+                    </a>
                   </TooltipTrigger>
                   <TooltipContent>
                     <p>Get a copy of my resume</p>

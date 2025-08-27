@@ -19,7 +19,7 @@ export default function HeroSection() {
               Ghaith Magherbi
             </h1>
             <p className="mx-auto max-w-[700px] text-gray-500 md:text-xl dark:text-gray-400 animate-in fade-in slide-in-from-bottom duration-700 delay-300">
-              Cloud & DevOps Engineer specializing in AWS, Terraform, Docker, and Kubernetes
+              Cloud & DevOps Engineer specializing in <span className="font-semibold text-amber-500">AWS</span>, <span className="font-semibold text-purple-500">Terraform</span>, <span className="font-semibold text-blue-500">Docker</span>, and <span className="font-semibold text-blue-100">Kubernetes</span>.
             </p>
           </div>
           <div className="space-x-4 animate-in fade-in slide-in-from-bottom duration-700 delay-500">

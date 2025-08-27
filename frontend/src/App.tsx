@@ -1,4 +1,4 @@
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { BrowserRouter, Routes, Route, useLocation } from "react-router-dom";
 import Navbar from "./components/Navbar";
 import Home from "./pages/Home";
 {/*import Blog from "./pages/Blog";*/}
@@ -9,14 +9,33 @@ import NotFound from "./pages/NotFound";
 import { ThemeProvider } from "@/components/theme-provider";
 import Footer from "./components/Footer";
 import { Toaster } from "sonner";
+import { useEffect } from "react";
+
+// ScrollToTop component that will handle the scrolling behavior
+function ScrollToTop() {
+  const { pathname } = useLocation();
+  
+  useEffect(() => {
+    // Smooth scroll to top with animation when route changes
+    window.scrollTo({
+      top: 0,
+      left: 0,
+      behavior: "smooth"
+    });
+  }, [pathname]);
+  
+  return null;
+}
 
 export default function App() {
   return (
     <BrowserRouter>
       <ThemeProvider defaultTheme="system" storageKey="vite-ui-theme">
         <div className="flex flex-col min-h-screen relative overflow-hidden">
+          {/* Add ScrollToTop component inside BrowserRouter */}
+          <ScrollToTop />
           <Navbar />
-          <main className="flex-grow pt-16">
+          <main className="flex-grow pt-16 animate-in fade-in slide-in-from-bottom-4 duration-500">
             <Routes>
               <Route path="/" element={<Home />} />
               <Route path="/about" element={<About />} />

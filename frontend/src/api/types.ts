@@ -3,9 +3,8 @@ export interface Project {
   title: string;
   description: string;
   content: string;
-  link: string;
-  github?: string;
-  categories?: string[];
+  link?: string;
+  repo: string;
   technologies?: string[];
 }
 

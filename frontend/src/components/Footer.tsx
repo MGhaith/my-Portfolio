@@ -34,14 +34,14 @@ export default function Footer() {
           >
             <Twitter className="h-5 w-5" />
             <span className="sr-only">Twitter</span>
-          </a>*/}
+          </a>
           <a 
             href="mailto:contact@ghaith-magherbi.com" 
             className="text-gray-500 hover:text-gray-700 dark:text-gray-400 dark:hover:text-gray-300"
           >
             <Mail className="h-5 w-5" />
             <span className="sr-only">Email</span>
-          </a>
+          </a>*/}
         </div>
       </div>
     </footer>

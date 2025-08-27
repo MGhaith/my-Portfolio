@@ -1,0 +1,56 @@
+[
+  {
+    "projectId": "001",
+    "title": "Portfolio",
+    "description": "Learn how to automate your deployment process using GitHub Actions for a modern cloud application.",
+    "content": "lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
+    "link": "https://ghaith-magherbi.com",
+    "repo": "https://gitlab.com/MGhaith/my-portfolio",
+    "technologies": ["GitHub Actions", "Docker", "Kubernetes"]
+  },
+  {
+    "projectId": "002", 
+    "title": "Project Two",
+    "description": "Learn how to automate your deployment process using GitHub Actions for a modern cloud application.",
+    "content": "lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
+    "link": "",
+    "repo": "https://github.com/MGhaith/my-portfolio",
+    "technologies": ["GitHub Actions", "Docker", "Kubernetes"]
+  },
+  {
+    "projectId": "003",
+    "title": "Project Three",
+    "description": "Learn how to automate your deployment process using GitHub Actions for a modern cloud application.",
+    "content": "lorem ipsum dre et dolore ma ullamco laboris nisi ut aliquip ex ea commodo consequat.",
+    "link": "",
+    "repo": "https://github.com/MGhaith/my-portfolio", 
+    "technologies": ["GitHub Actions", "Docker"]
+  },
+  {
+    "projectId": "004",
+    "title": "Project Four",
+    "description": "Learn how to automate your deployment process using GitHub Actions for a modern cloud application.",
+    "content": "lorem ipsum dolor lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut l consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
+    "link": "",
+    "repo": "https://gitlab.com/MGhaith/my-portfolio",
+    "technologies": ["Kubernetes"]
+  },
+  {
+    "projectId": "005",
+    "title": "Project Five",
+    "description": "Learn how to automate your deployment process using GitHub Actions for a modern cloud application.",
+    "content": "lorem ipsum dolor lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut l consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
+    "link": "",
+    "repo": "https://gitlab.com/MGhaith/my-portfolio",
+    "technologies": ["Kubernetes"]
+  },
+  {
+    "projectId": "006",
+    "title": "Project Six",
+    "description": "Learn how to automate your deployment process using GitHub Actions for a modern cloud application.",
+    "content": "lorem ipsum dolor lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut l consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
+    "link": "",
+    "repo": "https://gitlab.com/MGhaith/my-portfolio",
+    "technologies": ["Kubernetes"]
+  }
+]

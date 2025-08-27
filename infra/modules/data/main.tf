@@ -55,18 +55,25 @@ resource "aws_dynamodb_table" "contacts" {
   }
 }
 
-# --- Example Seed Item (your portfolio project) ---
+#  Add portfolio projects from json file ---
+locals {
+  projects = jsondecode(file("${path.module}/projects.json"))
+}
+
 resource "aws_dynamodb_table_item" "portfolio_project" {
+  count      = length(local.projects)
   provider    = aws.data
   table_name  = aws_dynamodb_table.projects.name
   hash_key    = "projectId"
 
   item = jsonencode({
-    projectId   = { S = "project-001" }
-    title       = { S = "Personal Cloud Portfolio" }
-    description = { S = "Serverless portfolio site with React, AWS Lambda, Terraform, and GitHub Actions" }
-    link        = { S = "https://ghaith-magherbi.com" }
-    tags        = { SS = ["aws", "devops", "portfolio"] }
+    projectId    = { S  = local.projects[count.index].projectId }
+    title        = { S  = local.projects[count.index].title }
+    description  = { S  = local.projects[count.index].description }
+    content      = { S  = local.projects[count.index].content }
+    link         = { S  = lookup(local.projects[count.index], "link", "") }
+    repo         = { S  = local.projects[count.index].repo }
+    technologies = { SS = local.projects[count.index].technologies }
   })
 }
 

@@ -15,7 +15,7 @@ export default function Resume() {
           <h2 className="text-2xl font-bold border-b pb-2 text-primary border-primary/30">Professional Experience</h2>
           
           <div className="space-y-2">
-            <h3 className="text-xl font-semibold text-foreground">Game Developer</h3>
+            <h3 className="text-xl font-semibold text-foreground">Game Engineer</h3>
             <p className="text-primary/80 dark:text-primary/70">Freelancer • July 2024 - Present</p>
             <ul className="list-disc pl-5 space-y-1 text-foreground/90">
               <li>Developed and deployed 2.5D platformer and mobile/web games using Godot Engine 4.2 and 4.3.</li>
@@ -27,7 +27,7 @@ export default function Resume() {
           </div>
 
           <div className="space-y-2">
-            <h3 className="text-xl font-semibold text-foreground">Game Developer</h3>
+            <h3 className="text-xl font-semibold text-foreground">Game Engineer</h3>
             <p className="text-primary/80 dark:text-primary/70"> LoCoNET GmbH • March 2024 - June 2024</p>
             <ul className="list-disc pl-5 space-y-1 text-foreground/90">
               <li>Built frontend features and UI systems for an online multiplayer colony game (Godot 3.5.3).</li>

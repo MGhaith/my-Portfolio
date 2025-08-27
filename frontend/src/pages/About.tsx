@@ -36,7 +36,7 @@ export default function About() {
         <h1 className="text-4xl font-bold text-center bg-gradient-to-r from-primary to-purple-400 bg-clip-text text-transparent">About Me</h1>
         <div className="prose dark:prose-invert mx-auto">
           <p className="text-foreground/90">
-            I’m a Cloud & DevOps Engineer, focused on AWS, Terraform, and CI/CD automation with GitHub Actions. I enjoy designing secure, cost-aware cloud architectures and turning manual workflows into fully automated pipelines.
+            I’m a Cloud & DevOps Engineer from Tunisia, focused on AWS, Terraform, and CI/CD automation with GitHub Actions. I enjoy designing secure, cost-aware cloud architectures and turning manual workflows into fully automated pipelines.
           </p>
           <p className="text-foreground/90">
             I have a strong passion for learning and continuously exploring new DevOps practices, from modern infrastructure design to monitoring and deployment strategies. For me, DevOps is not just a job—it’s a craft I enjoy improving every day.

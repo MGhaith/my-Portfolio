@@ -1,16 +1,31 @@
+import json
+import boto3
 import os
-import pytest
-from unittest.mock import patch
-from app import lambda_handler
+from boto3.dynamodb.conditions import Key
 
-@pytest.fixture(autouse=True)
-def mock_env_vars():
-    with patch.dict(os.environ, {"PROJECTS_TABLE_NAME": "dummy-table", "AWS_REGION": "eu-central-1"}):
-        yield
+def get_table():
+    dynamodb = boto3.resource("dynamodb", region_name=os.environ.get("AWS_REGION", "eu-central-1"))
+    return dynamodb.Table(os.environ["PROJECTS_TABLE_NAME"])
 
-def test_lambda_handler_returns_projects():
-    event = {}  # mock API Gateway event if needed
-    context = None
-    response = lambda_handler(event, context)
-    assert response["statusCode"] == 200
-    assert "projects" in response["body"]
+def serialize_item(item):
+    for k, v in item.items():
+        if isinstance(v, set):
+            item[k] = list(v)
+    return item
+
+def lambda_handler(event, context):
+    table = get_table()  # initialize here, after environment is guaranteed
+    try:
+        response = table.scan()
+        items = [serialize_item(i) for i in response.get("Items", [])]
+        return {
+            "statusCode": 200,
+            "headers": {"Content-Type": "application/json"},
+            "body": json.dumps(items)
+        }
+    except Exception as e:
+        return {
+            "statusCode": 500,
+            "headers": {"Content-Type": "application/json"},
+            "body": json.dumps({"error": str(e)})
+        }

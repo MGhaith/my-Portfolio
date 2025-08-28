@@ -39,8 +39,10 @@ jobs:
       - name: Install dependencies
         run: pip install pytest
       - name: Run Python tests
-        run: pytest tests
+        run: pytest
         working-directory: ./backend/getProjects
+        env:
+          PYTHONPATH: ./backend/getProjects
 
   frontend:
     runs-on: ubuntu-latest

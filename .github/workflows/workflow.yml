@@ -37,7 +37,9 @@ jobs:
         with:
           python-version: "3.13"
       - name: Install dependencies
-        run: pip install pytest
+        run: |
+          pip install boto3
+          pip install pytest
       - name: Run Python tests
         run: pytest getProjects/tests
         working-directory: ./backend

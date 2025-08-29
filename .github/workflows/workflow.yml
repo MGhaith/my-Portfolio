@@ -3,6 +3,10 @@ name: Workflow Dispatch
 on:
   push:
     branches: [ "main" ]
+    paths:
+      - 'infra/**'
+      - 'frontend/**'
+      - 'backend/**'
   workflow_dispatch:
 
 jobs:

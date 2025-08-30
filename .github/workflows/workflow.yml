@@ -74,11 +74,24 @@ jobs:
           role-to-assume: arn:aws:iam::075091538636:role/GitHubActionsFrontendRole
           aws-region: us-east-1
 
-      - name: Sync build to S3
+      - name: Sync build to S3 (Staging)
+        if: github.ref == 'refs/heads/staging'
+        run: aws s3 sync ./frontend/dist/ s3://staging.ghaith-magherbi.com/ --delete
+
+      - name: Sync build to S3 (Prod)
+        if: github.ref == 'refs/heads/main'
         run: aws s3 sync ./frontend/dist/ s3://ghaith-magherbi.com/ --delete
 
-      - name: Invalidate CloudFront cache
+      - name: Invalidate CloudFront cache (Staging)
+        if: github.ref == 'refs/heads/staging'
         run: |
           aws cloudfront create-invalidation \
-            --distribution-id E2ID0F0L5RDMX8 \
+            --distribution-id E1HNB6O82BED0P \
+            --paths "/*"
+      
+      - name: Invalidate CloudFront cache (Prod)
+        if: github.ref == 'refs/heads/main'
+        run: |
+          aws cloudfront create-invalidation \
+            --distribution-id E1PFBLSJY0JJNI \
             --paths "/*"

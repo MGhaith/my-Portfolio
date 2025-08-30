@@ -17,14 +17,6 @@ provider "aws" {
   alias  = "data"
 }
 
-variable "projects_table_name" {
-  type    = string
-}
-
-variable "contacts_table_name" {
-  type    = string
-}
-
 variable "environment" {
   type    = string
 }
@@ -32,7 +24,7 @@ variable "environment" {
 # --- Portfolio Projects Table ---
 resource "aws_dynamodb_table" "projects" {
   provider = aws.data
-  name     = var.projects_table_name  
+  name     = "PortfolioProjectsTable-${var.environment}"  
   billing_mode = "PAY_PER_REQUEST"
 
   hash_key = "projectId"
@@ -51,7 +43,7 @@ resource "aws_dynamodb_table" "projects" {
 # --- Portfolio Contacts Table ---
 resource "aws_dynamodb_table" "contacts" {
   provider = aws.data
-  name     = var.contacts_table_name
+  name     = "PortfolioContactsTable-${var.environment}"
   billing_mode = "PAY_PER_REQUEST"
 
   hash_key = "contactId"

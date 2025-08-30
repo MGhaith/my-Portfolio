@@ -1,0 +1,11 @@
+[
+  {
+    "projectId": "001",
+    "title": "Portfolio",
+    "description": "Personal portfolio.",
+    "content": "lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
+    "link": "https://ghaith-magherbi.com",
+    "repo": "https://gitlab.com/MGhaith/my-portfolio",
+    "technologies": ["GitHub Actions", "Terraform", "AWS"]
+  }
+]

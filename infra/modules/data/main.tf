@@ -17,10 +17,22 @@ provider "aws" {
   alias  = "data"
 }
 
+variable "projects_table_name" {
+  type    = string
+}
+
+variable "contacts_table_name" {
+  type    = string
+}
+
+variable "environment" {
+  type    = string
+}
+
 # --- Portfolio Projects Table ---
 resource "aws_dynamodb_table" "projects" {
   provider = aws.data
-  name     = "PortfolioProjectsTable"
+  name     = var.projects_table_name  
   billing_mode = "PAY_PER_REQUEST"
 
   hash_key = "projectId"
@@ -31,7 +43,7 @@ resource "aws_dynamodb_table" "projects" {
   }
 
   tags = {
-    Environment = "prod"
+    Environment = var.environment
     Service     = "portfolio"
   }
 }
@@ -39,7 +51,7 @@ resource "aws_dynamodb_table" "projects" {
 # --- Portfolio Contacts Table ---
 resource "aws_dynamodb_table" "contacts" {
   provider = aws.data
-  name     = "PortfolioContactsTable"
+  name     = var.contacts_table_name
   billing_mode = "PAY_PER_REQUEST"
 
   hash_key = "contactId"
@@ -50,14 +62,14 @@ resource "aws_dynamodb_table" "contacts" {
   }
 
   tags = {
-    Environment = "prod"
+    Environment = var.environment
     Service     = "portfolio"
   }
 }
 
 #  Add portfolio projects from json file ---
 locals {
-  projects = jsondecode(file("${path.module}/projects.json"))
+  projects = jsondecode(file("${path.module}/projects-${var.environment}.json"))
 }
 
 resource "aws_dynamodb_table_item" "portfolio_project" {

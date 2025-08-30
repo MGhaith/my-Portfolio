@@ -22,6 +22,10 @@ variable "ses_email" {
   default = "contact@ghaith-magherbi.com"
 }
 
+variable "environment" {
+  type = string
+}
+
 data "aws_caller_identity" "current" {}
 
 ############################################
@@ -30,7 +34,7 @@ data "aws_caller_identity" "current" {}
 
 # Role for Projects Lambda
 resource "aws_iam_role" "projects_lambda_role" {
-  name = "portfolio-projects-lambda-role"
+  name = "portfolio-projects-lambda-role-${var.environment}"
 
   assume_role_policy = jsonencode({
     Version = "2012-10-17",
@@ -44,7 +48,7 @@ resource "aws_iam_role" "projects_lambda_role" {
 
 # Role for Contact Lambda
 resource "aws_iam_role" "contact_lambda_role" {
-  name = "portfolio-contact-lambda-role"
+  name = "portfolio-contact-lambda-role-${var.environment}"
 
   assume_role_policy = jsonencode({
     Version = "2012-10-17",
@@ -69,7 +73,7 @@ resource "aws_iam_role_policy_attachment" "contact_lambda_logs" {
 
 # Inline policy for Projects Lambda (DynamoDB read)
 resource "aws_iam_role_policy" "projects_lambda_policy" {
-  name = "portfolio-projects-lambda-policy"
+  name = "portfolio-projects-lambda-policy-${var.environment}"
   role = aws_iam_role.projects_lambda_role.id
 
   policy = jsonencode({
@@ -84,7 +88,7 @@ resource "aws_iam_role_policy" "projects_lambda_policy" {
 
 # Inline policy for Contact Lambda (DynamoDB write + SES)
 resource "aws_iam_role_policy" "contact_lambda_policy" {
-  name = "portfolio-contact-lambda-policy"
+  name = "portfolio-contact-lambda-policy-${var.environment}"
   role = aws_iam_role.contact_lambda_role.id
 
   policy = jsonencode({
@@ -110,12 +114,12 @@ resource "aws_iam_role_policy" "contact_lambda_policy" {
 # Package Contact Lambda
 data "archive_file" "submitContact" {
   type        = "zip"
-  source_dir  = "${path.root}/../backend/submitContact"
+  source_dir  = "${path.root}/../../../backend/submitContact"
   output_path = "${path.module}/lambda_build/submitContact.zip"
 }
 
 resource "aws_lambda_function" "submitContact" {
-  function_name = "PortfolioContactFunction"
+  function_name = "PortfolioContactFunction-${var.environment}"
   role          = aws_iam_role.contact_lambda_role.arn
   handler       = "app.lambda_handler"
   runtime       = "python3.13"
@@ -135,12 +139,12 @@ resource "aws_lambda_function" "submitContact" {
 # Package Projects Lambda
 data "archive_file" "getProjects" {
   type        = "zip"
-  source_dir  = "${path.root}/../backend/getProjects"
+  source_dir  = "${path.root}/../../../backend/getProjects"
   output_path = "${path.module}/lambda_build/getProjects.zip"
 }
 
 resource "aws_lambda_function" "getProjects" {
-  function_name = "PortfolioProjectsFunction"
+  function_name = "PortfolioProjectsFunction-${var.environment}"
   role          = aws_iam_role.projects_lambda_role.arn
   handler       = "app.lambda_handler"
   runtime       = "python3.13"
@@ -159,15 +163,16 @@ resource "aws_lambda_function" "getProjects" {
 # API GATEWAY
 ############################################
 
+variable "cors_origins" {
+  type = list(string)
+}
+
 resource "aws_apigatewayv2_api" "http_api" {
-  name          = "portfolio-api"
+  name          = "portfolio-api-${var.environment}"
   protocol_type = "HTTP"
 
   cors_configuration {
-    allow_origins = [
-      "https://ghaith-magherbi.com",
-      "https://www.ghaith-magherbi.com"
-    ]
+    allow_origins = var.cors_origins
     allow_methods = ["GET", "POST", "OPTIONS"]
     allow_headers = ["content-type"]
   }
@@ -232,9 +237,15 @@ resource "aws_lambda_permission" "allow_apigw_projects" {
 ############################################
 
 variable "acm_certificate_arn" {}
+variable "api_domain_name" {
+  type = string
+}
+variable "api_record_name" {
+  type = string
+}
 
 resource "aws_apigatewayv2_domain_name" "api_domain" {
-  domain_name = "api.ghaith-magherbi.com"
+  domain_name = var.api_domain_name
   domain_name_configuration {
     certificate_arn = var.acm_certificate_arn
     endpoint_type   = "REGIONAL"
@@ -251,7 +262,7 @@ resource "aws_apigatewayv2_api_mapping" "api_mapping" {
 # Route53 record to point subdomain to API Gateway
 resource "aws_route53_record" "api_record" {
   zone_id = "Z0026678267UFMSA9SLXO"
-  name    = "api"  # eg: api.ghaith-magherbi.com
+  name    = var.api_record_name  # eg: api.ghaith-magherbi.com
   type    = "A"
 
   alias {

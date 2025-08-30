@@ -6,10 +6,6 @@ on:
       "main",
       "staging"
      ]
-    paths:
-      - 'infra/**'
-      - 'frontend/**'
-      - 'backend/**'
   workflow_dispatch:
 
 jobs:
@@ -68,13 +64,14 @@ jobs:
         run: npm run test -- --coverage
         working-directory: ./frontend
 
-      - name: Build React app
-        run: |
-          if github.ref == 'refs/heads/main'; then
-            npm run build -- --mode production
-          else
-            npm run build -- --mode staging
-          fi
+      - name: Build React app (Staging)
+        if: github.ref == 'refs/heads/staging'
+        run: npm run build -- --mode staging
+        working-directory: ./frontend
+
+      - name: Build React app (Prod)
+        if: github.ref == 'refs/heads/main'
+        run: npm run build -- --mode production
         working-directory: ./frontend
 
       - name: Configure AWS credentials via OIDC (Frontend)

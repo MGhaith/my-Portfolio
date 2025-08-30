@@ -1,6 +1,6 @@
 import type { Project, ContactFormData } from "./types.ts";
 
-const BASE_URL = "https://api.ghaith-magherbi.com";
+const BASE_URL = import.meta.env.VITE_API_BASE_URL;
 
 export async function getProjects(): Promise<Project[]> {
   const res = await fetch(`${BASE_URL}/projects`);

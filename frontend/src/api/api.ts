@@ -3,6 +3,8 @@ import type { Project, ContactFormData } from "./types.ts";
 const BASE_URL = import.meta.env.VITE_API_BASE_URL;
 
 export async function getProjects(): Promise<Project[]> {
+  console.log(import.meta.env.VITE_API_BASE_URL);
+  console.log(BASE_URL);
   const res = await fetch(`${BASE_URL}/projects`);
   if (!res.ok) throw new Error("Failed to fetch projects");
   return res.json();

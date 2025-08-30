@@ -10,6 +10,11 @@ terraform {
 variable "domain_name" {}
 variable "bucket_name" {}
 variable "acm_certificate_arn" {}
+variable "hosted_zone_id" {}
+variable "environment" {}
+variable "aliases" {
+  type = list(string)
+}
 
 resource "aws_s3_bucket" "site" {
     provider = aws.eu
@@ -46,7 +51,7 @@ resource "aws_cloudfront_distribution" "cdn" {
     enabled = true
     default_root_object = "index.html"
 
-    aliases = [var.domain_name, "www.${var.domain_name}"]
+    aliases = var.aliases
 
     # important: catch 403/404 and redirect to index.html
     custom_error_response {
@@ -128,7 +133,7 @@ resource "aws_s3_bucket_policy" "allow_cloudfront" {
 
 resource "aws_cloudfront_function" "redirect_www" {
     provider = aws.us
-    name    = "www-redirect"
+    name    = "www-redirect-${var.environment}"
     runtime = "cloudfront-js-2.0"
     publish = true
     code    = <<EOF
@@ -153,16 +158,32 @@ function handler(event) {
 EOF
 }
 
+resource "aws_route53_record" "root" {
+  zone_id = var.hosted_zone_id
+  name    = var.domain_name
+  type    = "A"
+
+  alias {
+    name                   = aws_cloudfront_distribution.cdn.domain_name
+    zone_id                = aws_cloudfront_distribution.cdn.hosted_zone_id
+    evaluate_target_health = false
+  }
+}
+
+resource "aws_route53_record" "root_ipv6" {
+  zone_id = var.hosted_zone_id
+  name    = var.domain_name
+  type    = "AAAA"
+
+  alias {
+    name                   = aws_cloudfront_distribution.cdn.domain_name
+    zone_id                = aws_cloudfront_distribution.cdn.hosted_zone_id
+    evaluate_target_health = false
+  }
+}
+
 output "bucket_name" {
   value = aws_s3_bucket.site.bucket
-}
-
-output "cloudfront_domain" {
-  value = aws_cloudfront_distribution.cdn.domain_name
-}
-
-output "cloudfront_zone_id" {
-  value = aws_cloudfront_distribution.cdn.hosted_zone_id
 }
 
 output "cloudfront_distribution_id" {

@@ -48,4 +48,5 @@ module "api_backend" {
   # Custom API
   api_domain_name = "api.ghaith-magherbi.com"
   acm_certificate_arn = "arn:aws:acm:eu-central-1:075091538636:certificate/c0481aca-c795-4c03-a7c4-52320d6bbee0"
+  api_record_name = "api"
 }

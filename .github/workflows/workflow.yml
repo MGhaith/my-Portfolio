@@ -65,16 +65,16 @@ jobs:
         working-directory: ./frontend
 
       - name: Run Tests
+        run: npm run test -- --coverage
+        working-directory: ./frontend
+
+      - name: Build React app
         run: |
           if github.ref == 'refs/heads/main'; then
             npm run build -- --mode production
           else
             npm run build -- --mode staging
           fi
-        working-directory: ./frontend
-
-      - name: Build React app
-        run: npm run build
         working-directory: ./frontend
 
       - name: Configure AWS credentials via OIDC (Frontend)

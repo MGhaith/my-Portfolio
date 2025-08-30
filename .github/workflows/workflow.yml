@@ -69,7 +69,6 @@ jobs:
         working-directory: ./frontend
 
       - name: Build React app (Staging)
-        run: |
         if: github.ref == 'refs/heads/staging'
         run: npm run build -- --mode staging
         working-directory: ./frontend

@@ -2,7 +2,10 @@ name: Workflow Dispatch
 
 on:
   push:
-    branches: [ "main" ]
+    branches: [ 
+      "main",
+      "staging"
+     ]
     paths:
       - 'infra/**'
       - 'frontend/**'
@@ -17,7 +20,8 @@ jobs:
       contents: read
     steps:
       - uses: actions/checkout@v4
-      - uses: hashicorp/setup-terraform@v3
+      - name: Set up Terraform
+        uses: hashicorp/setup-terraform@v3
 
       - name: Configure AWS credentials via OIDC (Terraform)
         uses: aws-actions/configure-aws-credentials@v4
@@ -25,12 +29,22 @@ jobs:
           role-to-assume: arn:aws:iam::075091538636:role/github-oidc-terraform
           aws-region: us-east-1
 
-      - run: terraform init
-        working-directory: ./infra
-      - run: terraform plan -out=tfplan
-        working-directory: ./infra
-      - run: terraform apply -auto-approve tfplan
-        working-directory: ./infra
+      - name: Terraform Init, Plan, and Apply (Staging)
+        if: github.ref == 'refs/heads/staging'
+        working-directory: ./infra/environments/staging
+        run: |
+          terraform init
+          terraform plan -out=tfplan
+          terraform apply -auto-approve tfplan
+
+      - name: Terraform Init, Plan, and Apply (Prod)
+        if: github.ref == 'refs/heads/main'
+        working-directory: ./infra/environments/prod
+        run: |
+          terraform init
+          terraform plan -out=tfplan
+          terraform apply -auto-approve tfplan
+        
 
   frontend:
     runs-on: ubuntu-latest
@@ -64,11 +78,24 @@ jobs:
           role-to-assume: arn:aws:iam::075091538636:role/GitHubActionsFrontendRole
           aws-region: us-east-1
 
-      - name: Sync build to S3
+      - name: Sync build to S3 (Staging)
+        if: github.ref == 'refs/heads/staging'
+        run: aws s3 sync ./frontend/dist/ s3://staging.ghaith-magherbi.com/ --delete
+
+      - name: Sync build to S3 (Prod)
+        if: github.ref == 'refs/heads/main'
         run: aws s3 sync ./frontend/dist/ s3://ghaith-magherbi.com/ --delete
 
-      - name: Invalidate CloudFront cache
+      - name: Invalidate CloudFront cache (Staging)
+        if: github.ref == 'refs/heads/staging'
         run: |
           aws cloudfront create-invalidation \
-            --distribution-id E2ID0F0L5RDMX8 \
+            --distribution-id E1HNB6O82BED0P \
+            --paths "/*"
+      
+      - name: Invalidate CloudFront cache (Prod)
+        if: github.ref == 'refs/heads/main'
+        run: |
+          aws cloudfront create-invalidation \
+            --distribution-id E1PFBLSJY0JJNI \
             --paths "/*"

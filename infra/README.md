@@ -1,6 +1,3 @@
-## 2. Infrastructure README (Terraform)
-
-```markdown:c%3A%5CUsers%5CGaaloul%20Sarra%5CDocuments%5CGitHub%5Cmy-Portfolio%5Cinfra%5CREADME.md
 # Infrastructure as Code (Terraform) 🏗️
 
 > Production-ready AWS infrastructure using Terraform modules and DevOps best practices
@@ -15,6 +12,7 @@ This infrastructure demonstrates **enterprise-grade DevOps practices** using Inf
 - **Operational Excellence**: Remote state management, state locking, automated deployments
 
 ## 📁 Project Structure
+```markdown
 infra/
 ├── 📄 main.tf              # Root configuration & provider setup
 ├── 📄 backend.tf            # Remote state configuration
@@ -27,7 +25,7 @@ infra/
 │   ├── 📂 github_oidc_terraform/  # OIDC for Terraform
 │   └── 📂 iam_github_oidc/  # OIDC for application deployment
 └── 📄 .terraform.lock.hcl   # Provider version locking
-
+```
 ## 🏛️ Architecture Components
 
 ### Core Infrastructure Modules
@@ -37,8 +35,6 @@ infra/
 | `cdn_frontend` | Static site hosting | S3, CloudFront, ACM Certificate |
 | `api_backend` | Serverless API | API Gateway, Lambda, DynamoDB, SES |
 | `data` | Database seeding | DynamoDB items, project data |
-| `github_oidc_terraform` | CI/CD authentication | IAM OIDC provider, roles |
-| `iam_github_oidc` | App deployment auth | IAM roles for S3/CloudFront access |
 
 ### Multi-Provider Setup
 

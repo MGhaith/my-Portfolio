@@ -6,6 +6,10 @@ on:
       "main",
       "staging"
      ]
+    paths:
+      - 'infra/**'
+      - 'frontend/**'
+      - 'backend/**'
   workflow_dispatch:
 
 jobs:

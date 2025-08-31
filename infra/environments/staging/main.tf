@@ -51,3 +51,15 @@ module "api_backend" {
   acm_certificate_arn = "arn:aws:acm:eu-central-1:075091538636:certificate/d5620f39-46c3-4a00-b371-a9687a61553a"
   api_record_name = "api.staging"
 }
+
+module "monitoring" {
+  source = "../../modules/monitoring"
+  
+  environment           = "staging"
+  alert_email           = "contact@ghaith-magherbi.com"
+  projects_lambda_name  = module.api_backend.projects_lambda_name
+  contacts_lambda_name  = module.api_backend.contacts_lambda_name
+  api_name              = module.api_backend.api_name
+  projects_table_name   = module.data.projects_table_name
+  contacts_table_name   = module.data.contacts_table_name
+}

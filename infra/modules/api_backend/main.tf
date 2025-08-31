@@ -272,6 +272,14 @@ resource "aws_route53_record" "api_record" {
   }
 }
 
-output "api_url" {
-  value = aws_apigatewayv2_api.http_api.api_endpoint
+output "projects_lambda_name" {
+  value = aws_lambda_function.getProjects.function_name
+}
+
+output "contacts_lambda_name" {
+  value = aws_lambda_function.submitContact.function_name
+}
+
+output "api_name" {
+  value = aws_apigatewayv2_api.http_api.name
 }

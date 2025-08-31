@@ -2,10 +2,10 @@
   {
     "projectId": "001",
     "title": "Portfolio",
-    "description": "Personal portfolio.",
-    "content": "lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
+    "description": "My personal portfolio.",
+    "content": "Production-ready serverless portfolio demonstrating modern Cloud and DevOps engineering practices. Built with Infrastructure as Code, automated CI/CD pipelines, and AWS serverless architecture.",
     "link": "https://ghaith-magherbi.com",
-    "repo": "https://gitlab.com/MGhaith/my-portfolio",
-    "technologies": ["GitHub Actions", "Terraform", "AWS"]
+    "repo": "https://github.com/MGhaith/my-portfolio",
+    "technologies": ["GitHub Actions", "Terraform", "AWS", "Python", "React", "TypeScript", "Tailwind"]
   }
 ]

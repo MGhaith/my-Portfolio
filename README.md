@@ -1,166 +1,120 @@
-# Cloud/DevOps Portfolio Project 🚀
-
-> A full-stack serverless portfolio showcasing modern Cloud and DevOps engineering practices
+# Cloud/DevOps Portfolio Project
 
 [![Deploy](https://github.com/MGhaith/my-Portfolio/actions/workflows/workflow.yml/badge.svg)](https://github.com/MGhaith/my-Portfolio/actions/workflows/workflow.yml)
 [![Live Demo](https://img.shields.io/badge/Live-Demo-blue)](https://ghaith-magherbi.com)
 
-## 🎯 What This Project Is
+## Overview
 
-This repository demonstrates a **production-ready Cloud/DevOps portfolio** built with modern serverless architecture and Infrastructure as Code (IaC) principles. It showcases:
+Production-ready serverless portfolio demonstrating modern Cloud and DevOps engineering practices. Built with Infrastructure as Code, automated CI/CD pipelines, and AWS serverless architecture.
 
-- **Infrastructure as Code** with Terraform modules
-- **Automated CI/CD** with GitHub Actions and OIDC
-- **Serverless Backend** using AWS Lambda, API Gateway, DynamoDB
-- **Static Frontend** deployed via CloudFront CDN
-- **Security Best Practices** with least-privilege IAM and no static credentials
-
-## 🏗️ Architecture Overview
+## Architecture
 
 ```mermaid
 graph TB
-    subgraph "Frontend (CDN)"
-        CF[CloudFront]
-        S3[S3 Bucket]
-        R53[Route53]
+    subgraph "Frontend (CloudFront + S3)"
+        CF[CloudFront Distribution]
+        S3[S3 Static Hosting]
+        ACM[SSL Certificate]
     end
     
     subgraph "Backend (Serverless)"
         APIGW[API Gateway]
-        L1[Lambda: getProjects]
-        L2[Lambda: submitContact]
-        DDB1[DynamoDB: Projects]
-        DDB2[DynamoDB: Contacts]
+        LAMBDA[Lambda Functions]
+        DDB[DynamoDB]
         SES[Amazon SES]
     end
     
-    subgraph "CI/CD Pipeline"
-        GHA[GitHub Actions]
-        TF[Terraform]
-        OIDC[GitHub OIDC]
-    end
-    
     subgraph "Infrastructure"
-        IAM[IAM Roles]
-        ACM[SSL Certificates]
-        CW[CloudWatch]
+        TF[Terraform IaC]
+        GHA[GitHub Actions]
+        OIDC[OIDC Authentication]
     end
     
+    subgraph "DNS & Routing"
+        R53[Route53]
+        DOMAIN[ghaith-magherbi.com]
+    end
+    
+    DOMAIN --> R53
     R53 --> CF
     CF --> S3
     CF --> APIGW
-    APIGW --> L1
-    APIGW --> L2
-    L1 --> DDB1
-    L2 --> DDB2
-    L2 --> SES
+    APIGW --> LAMBDA
+    LAMBDA --> DDB
+    LAMBDA --> SES
     
-    GHA --> OIDC
-    OIDC --> IAM
-    GHA --> TF
     TF --> CF
     TF --> APIGW
-    TF --> L1
-    TF --> L2
+    TF --> LAMBDA
+    GHA --> TF
+    OIDC --> GHA
 ```
 
-## 🌟 Key Highlights
+## Key Features
 
-### 🔧 Infrastructure as Code (Terraform)
-- **Modular Design**: Reusable Terraform modules for different components
-- **Remote State**: S3 backend with DynamoDB locking
-- **Multi-Region**: Strategic resource placement (US-East-1 for CloudFront, EU-Central-1 for backend)
-- **Environment Separation**: Clean staging/production isolation
+### Infrastructure & DevOps
+- **Multi-Environment**: Production and staging environments
+- **Infrastructure as Code**: Terraform modules with remote state
+- **CI/CD Pipeline**: GitHub Actions with OIDC authentication
+- **Security**: No static credentials, least-privilege IAM
+- **Monitoring**: CloudWatch integration and alerting
 
-### 🔄 Automated CI/CD Pipeline
-- **GitHub Actions**: Fully automated deployment pipeline
-- **OIDC Integration**: Secure AWS access without static credentials
-- **Multi-Stage**: Terraform → Frontend build → Deploy → Cache invalidation
-- **Testing**: Automated frontend testing with coverage reports
+### Architecture
+- **Serverless Backend**: AWS Lambda, API Gateway, DynamoDB
+- **Global CDN**: CloudFront with edge locations
+- **Custom Domains**: Route53 DNS with SSL certificates
+- **Email Integration**: SES for contact form notifications
 
-### ⚡ Serverless Backend Architecture
-- **API Gateway**: RESTful API with custom domain and SSL
-- **AWS Lambda**: Python functions for `/projects` and `/contact` endpoints
-- **DynamoDB**: NoSQL database for projects and contact submissions
-- **Amazon SES**: Email notifications for contact form submissions
-- **Auto-scaling**: Pay-per-use serverless compute
+## Live Demo
 
-### 🛡️ Security & Best Practices
-- **Least Privilege IAM**: Minimal required permissions for each component
-- **GitHub OIDC**: No long-lived AWS credentials in repository
-- **SSL/TLS**: End-to-end encryption with ACM certificates
-- **CORS Configuration**: Secure cross-origin resource sharing
+**Portfolio**: [https://ghaith-magherbi.com](https://ghaith-magherbi.com)  
+**API**: [https://api.ghaith-magherbi.com](https://api.ghaith-magherbi.com)
 
-### 📊 Monitoring & Operations
-- **CloudWatch Integration**: Automatic logging and monitoring
-- **Error Handling**: Comprehensive error responses and logging
-- **Performance**: CloudFront CDN for global content delivery
-
-## 🚀 Live Demo
-
-**Portfolio Site**: [https://ghaith-magherbi.com](https://ghaith-magherbi.com)
-
-**API Endpoints**:
-- `GET https://api.ghaith-magherbi.com/projects` - Fetch portfolio projects
-- `POST https://api.ghaith-magherbi.com/contact` - Submit contact form
-
-## 📁 Repository Structure
+## Repository Structure
 ```
-├── 📂 infra/           # Terraform Infrastructure as Code
-├── 📂 backend/         # Python Lambda Functions
-├── 📂 frontend/        # React SPA Application
-├── 📂 .github/         # CI/CD Pipeline Configuration
-└── 📄 README.md        # This file
+├── infra/                 # Terraform Infrastructure
+│   ├── environments/      # Environment-specific configs
+│   │   ├── prod/          # Production environment
+│   │   └── staging/       # Staging environment
+│   └── modules/           # Reusable Terraform modules
+├── backend/               # Python Lambda Functions
+├── frontend/              # React SPA Application
+└── .github/workflows/     # CI/CD Pipeline
 ```
-## 🗂️ Documentation Navigation
 
-| Component | Description | Documentation |
-|-----------|-------------|---------------|
-| **Infrastructure** | Terraform modules, IaC, DevOps practices | [📖 infra/README.md](./infra/README.md) |
-| **Backend API** | Python Lambdas, serverless architecture | [📖 backend/README.md](./backend/README.md) |
-| **Frontend SPA** | React app, CloudFront deployment | [📖 frontend/README.md](./frontend/README.md) |
+## Documentation
 
-## 🎓 Previous Projects Evolution
+| Component | Description | Link |
+|-----------|-------------|------|
+| **Infrastructure** | Terraform modules and multi-environment setup | [infra/README.md](./infra/README.md) |
+| **Backend** | Serverless API with Lambda and DynamoDB | [backend/README.md](./backend/README.md) |
+| **Frontend** | React SPA with CloudFront deployment | [frontend/README.md](./frontend/README.md) |
 
-This project represents the evolution of my cloud journey:
+## Quick Start
 
-1. **Static Website** → Basic S3 + CloudFront setup
-2. **First Serverless API** → Simple Lambda + API Gateway
-3. **This Portfolio** → Full production-ready DevOps pipeline
+### Deploy Infrastructure
+```bash
+cd infra/environments/prod
+terraform init
+terraform plan
+terraform apply
+```
 
-## 🚀 Quick Start
+### Deploy Frontend
+```bash
+cd frontend
+npm install
+npm run build
+# Automated deployment via GitHub Actions
+```
 
-1. **Clone the repository**
-   ```bash
-   git clone https://github.com/MGhaith/my-Portfolio.git
-   cd my-Portfolio
-2. **Deploy Infrastructure**
-    ```bash
-    cd infra
-    terraform init
-    terraform plan
-    terraform apply
-3. **Deploy Frontend**
-    ```bash
-    cd frontend
-    npm install
-    npm run build
-    # Deployment handled by CI/CD pipeline
-## 🛠️ Technologies Used
+## Technologies
 
-**Infrastructure & DevOps :**
-- Terraform, AWS (Lambda, API Gateway, DynamoDB, S3, CloudFront, Route53, SES, IAM)
-- GitHub Actions, GitHub OIDC
-
-**Backend :**
-- Python 3.13, Boto3, AWS Lambda
-
-**Frontend :**
-- React 19, TypeScript, Vite, Tailwind CSS, Radix UI
-
-**Monitoring :**
-- AWS CloudWatch, AWS X-Ray
+**Infrastructure**: Terraform, AWS (Lambda, API Gateway, DynamoDB, S3, CloudFront, Route53, SES, IAM), GitHub Actions  
+**Backend**: Python 3.13, Boto3  
+**Frontend**: React 19, TypeScript, Vite, Tailwind CSS  
+**Monitoring**: AWS CloudWatch
 
 ---
 
-*This project demonstrates production-ready Cloud/DevOps engineering practices suitable for enterprise environments.*
+*Production-ready Cloud/DevOps portfolio demonstrating enterprise-grade practices.*

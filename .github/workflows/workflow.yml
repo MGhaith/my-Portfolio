@@ -101,3 +101,15 @@ jobs:
           aws cloudfront create-invalidation \
             --distribution-id E1PFBLSJY0JJNI \
             --paths "/*"
+  
+  smoke-tests:
+    runs-on: ubuntu-latest
+    needs: frontend
+    steps:
+      - name: Check frontend availability
+        run: |
+          curl -s -o /dev/null -w "%{http_code}" https://staging.ghaith-magherbi.com | grep 200
+
+      - name: Check API availability
+        run: |
+          curl -s -o /dev/null -w "%{http_code}" https://api.staging.ghaith-magherbi.com/projects | grep 200

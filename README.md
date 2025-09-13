@@ -68,7 +68,7 @@ graph TB
 ## Live Demo
 
 **Portfolio**: [https://ghaith-magherbi.com](https://ghaith-magherbi.com)  
-**API**: [https://api.ghaith-magherbi.com](https://api.ghaith-magherbi.com)
+**Staging**: [https://staging.ghaith-magherbi.com](https://staging.ghaith-magherbi.com)
 
 ## Repository Structure
 ```

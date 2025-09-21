@@ -78,6 +78,7 @@ resource "aws_dynamodb_table_item" "portfolio_project" {
     link         = { S  = lookup(local.projects[count.index], "link", "") }
     repo         = { S  = local.projects[count.index].repo }
     technologies = { SS = local.projects[count.index].technologies }
+    featured     = { BOOL = local.projects[count.index].featured }
   })
 }
 

@@ -6,6 +6,94 @@
     "content": "Production-ready serverless portfolio demonstrating modern Cloud and DevOps engineering practices. Built with Infrastructure as Code, automated CI/CD pipelines, and AWS serverless architecture.",
     "link": "https://ghaith-magherbi.com",
     "repo": "https://github.com/MGhaith/my-portfolio",
-    "technologies": ["GitHub Actions", "Terraform", "AWS", "Python", "React", "TypeScript", "Tailwind"]
+    "technologies": ["GitHub Actions", "Terraform", "AWS", "Python", "React", "TypeScript", "Tailwind"],
+    "featured": true
+  },
+  {
+    "projectId": "002",
+    "title": "n8n Automation Playground",
+    "description": "End-to-end n8n automation and observability stack.",
+    "content": "A self-hosted workflow automation platform (n8n) running on Docker with persistent storage and integrated monitoring. The project demonstrates DevOps practices with Prometheus + Grafana observability, GitHub Actions CI/CD pipelines, and IaC principles.",
+    "link": "",
+    "repo": "https://github.com/MGhaith/n8n-Automation-Playground",
+    "technologies": ["n8n", "Postgres", "GitHub Actions", "Kubernetes", "Docker", "Grafana", "Prometheus"],
+    "featured": false
+  }
+  ,
+  {
+    "projectId": "003",
+    "title": "Reusable Monitoring Stack",
+    "description": "Portable, easily deployable monitoring and alerting stack.",
+    "content": "Designed and implemented a containerized monitoring stack with Prometheus, Alertmanager, and Grafana to provide observability, alerting, and metrics visualization. The project emphasizes reusability, ease of deployment, and professional DevOps practices such as IaC and CI/CD.",
+    "link": "",
+    "repo": "https://github.com/MGhaith/Reusable-Monitoring-Stack",
+    "technologies": ["GitHub Actions", "Terraform", "AWS", "Docker", "Grafana", "Prometheus", "Alert Manager"],
+    "featured": true
+  }
+  ,
+  {
+    "projectId": "004",
+    "title": "Server Performance Stats",
+    "description": "Analyze and monitor essential Linux server performance metrics.",
+    "content": "A Bash script that collects and displays key system statistics including CPU, memory, disk usage, and network performance. Built to be portable across Linux servers, it provides quick insights for troubleshooting and monitoring.",
+    "link": "",
+    "repo": "https://github.com/MGhaith/Server-Performance-Stats",
+    "technologies": ["linux", "bash", "shell scripting"],
+    "featured": false
+  }
+  ,
+  {
+    "projectId": "005",
+    "title": "Log Archive Tool",
+    "description": "A tool to archive logs from the CLI with the date and time.",
+    "content": "A command-line utility that compresses log files into timestamped archives and stores them in a dedicated directory, keeping systems clean while preserving logs for future reference. It also maintains a log history of archiving actions for auditing and monitoring.",
+    "link": "",
+    "repo": "https://github.com/MGhaith/Log-Archive-Tool",
+    "technologies": ["linux", "bash", "shell scripting"],
+    "featured": false
+  }
+  ,
+  {
+    "projectId": "006",
+    "title": "Nginx Log Analyser",
+    "description": "A simple tool to analyze nginx logs from the command line.",
+    "content": "A shell script that extracts insights from Nginx access logs, including top IP addresses, most requested paths, common response codes, and frequent user agents. It leverages classic Unix tools to provide quick log analysis directly from the command line.",
+    "link": "",
+    "repo": "https://github.com/MGhaith/Nginx-Log-Analyser",
+    "technologies": ["linux", "bash", "shell scripting"],
+    "featured": false
+  }
+  ,
+  {
+    "projectId": "007",
+    "title": "GitHub Pages Deployment",
+    "description": "Deploy static websites to GitHub Pages using GitHub Actions.",
+    "content": "A GitHub Actions workflow that automates the deployment of static websites to GitHub Pages. The project showcases DevOps practices with CI/CD, version control, and automated deployment.",
+    "link": "https://mghaith.github.io/GitHub-Pages-Deployment/",
+    "repo": "https://github.com/MGhaith/GitHub-Pages-Deployment",
+    "technologies": ["GitHub Actions", "CI/CD"],
+    "featured": true
+  }
+  ,
+  {
+    "projectId": "008",
+    "title": "SSH Remote Server Setup",
+    "description": "Provisioned Linux server with SSH access and security configuration.",
+    "content": "Set up a remote Amazon Linux 2023 server on AWS using Terraform, configured multiple SSH key pairs, and enabled secure login. Installed and configured Fail2Ban to protect the server against brute-force attacks.",
+    "link": "",
+    "repo": "https://github.com/MGhaith/SSH-Remote-Server-Setup",
+    "technologies": ["AWS", "Terraform", "SSH", "linux"],
+    "featured": false
+  }
+  ,
+  {
+    "projectId": "009",
+    "title": "Static Site Server",
+    "description": "Serve a static website with Nginx on AWS.",
+    "content": "Deployed a static website on an AWS EC2 instance using Nginx, with automated deployments via rsync and SSH. Configured the server to host HTML, CSS, and images, and built a deploy script for seamless updates.",
+    "link": "",
+    "repo": "https://github.com/MGhaith/Static-Site-Server",
+    "technologies": ["AWS", "Rsync", "SSH", "linux", "Nginx", "Bash"],
+    "featured": true
   }
 ]

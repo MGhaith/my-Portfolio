@@ -6,6 +6,7 @@ export interface Project {
   link?: string;
   repo: string;
   technologies?: string[];
+  featured?: boolean;
 }
 
 export interface ContactFormData {

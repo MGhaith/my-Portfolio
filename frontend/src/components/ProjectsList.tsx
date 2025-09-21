@@ -24,8 +24,8 @@ export default function ProjectsList() {
       });
   }, []);
 
-  // Get only the 4 most recent projects (reverse order)
-  const recentProjects = [...projects].reverse().slice(0, 4);
+  // Get only featured projects
+  const featuredProjects = projects.filter(project => project.featured);
 
   return (
     <section className="py-10" id="projects">
@@ -62,7 +62,7 @@ export default function ProjectsList() {
           </div>
         ) : (
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-            {recentProjects.map((project, index) => (
+            {featuredProjects.map((project, index) => (
               <Card 
                 key={project.id} 
                 className="flex flex-col h-full border-primary/20 hover:border-primary/50 transition-colors animate-in fade-in duration-700"

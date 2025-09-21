@@ -6,7 +6,8 @@
     "content": "lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
     "link": "https://ghaith-magherbi.com",
     "repo": "https://gitlab.com/MGhaith/my-portfolio",
-    "technologies": ["GitHub Actions", "Docker", "Kubernetes"]
+    "technologies": ["GitHub Actions", "Docker", "Kubernetes"],
+    "featured": true
   },
   {
     "projectId": "002", 
@@ -15,7 +16,8 @@
     "content": "lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
     "link": "",
     "repo": "https://github.com/MGhaith/my-portfolio",
-    "technologies": ["GitHub Actions", "Docker", "Kubernetes"]
+    "technologies": ["GitHub Actions", "Docker", "Kubernetes"],
+    "featured": false
   },
   {
     "projectId": "003",
@@ -24,7 +26,8 @@
     "content": "lorem ipsum dre et dolore ma ullamco laboris nisi ut aliquip ex ea commodo consequat.",
     "link": "",
     "repo": "https://github.com/MGhaith/my-portfolio", 
-    "technologies": ["GitHub Actions", "Docker"]
+    "technologies": ["GitHub Actions", "Docker"],
+    "featured": true
   },
   {
     "projectId": "004",
@@ -33,7 +36,8 @@
     "content": "lorem ipsum dolor lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut l consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
     "link": "",
     "repo": "https://gitlab.com/MGhaith/my-portfolio",
-    "technologies": ["Kubernetes"]
+    "technologies": ["Kubernetes"],
+    "featured": true
   },
   {
     "projectId": "005",
@@ -42,7 +46,8 @@
     "content": "lorem ipsum dolor lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut l consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
     "link": "",
     "repo": "https://gitlab.com/MGhaith/my-portfolio",
-    "technologies": ["Kubernetes"]
+    "technologies": ["Docker"],
+    "featured": true
   },
   {
     "projectId": "006",
@@ -51,6 +56,7 @@
     "content": "lorem ipsum dolor lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut l consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
     "link": "",
     "repo": "https://gitlab.com/MGhaith/my-portfolio",
-    "technologies": ["Kubernetes"]
+    "technologies": ["Kubernetes"],
+    "featured": false
   }
 ]

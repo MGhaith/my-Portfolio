@@ -66,7 +66,7 @@ export default function Resume() {
               <TooltipProvider>
                 <Tooltip>
                   <TooltipTrigger asChild>
-                    <a href="https://drive.google.com/uc?export=download&id=1_J3bjWs3Z4MtbO7zw1rG_XQY43tJA-NR" download>
+                    <a href="/files/ghaith_magherbi_resume.pdf" download>
                       <Button className="h-11 px-6 bg-primary hover:bg-primary/90">
                         <Download className="mr-2 h-4 w-4" />
                         Download Resume (PDF)

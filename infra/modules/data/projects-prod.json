@@ -16,7 +16,7 @@
     "content": "A self-hosted workflow automation platform (n8n) running on Docker with persistent storage and integrated monitoring. The project demonstrates DevOps practices with Prometheus + Grafana observability, GitHub Actions CI/CD pipelines, and IaC principles.",
     "link": "",
     "repo": "https://github.com/MGhaith/n8n-Automation-Playground",
-    "technologies": ["n8n", "Postgres", "GitHub Actions", "Kubernetes", "Docker", "Grafana", "Prometheus"],
+    "technologies": ["n8n", "Postgres", "GitHub Actions", "Docker", "Grafana", "Prometheus"],
     "featured": false
   }
   ,
@@ -72,7 +72,7 @@
     "link": "https://mghaith.github.io/GitHub-Pages-Deployment/",
     "repo": "https://github.com/MGhaith/GitHub-Pages-Deployment",
     "technologies": ["GitHub Actions", "CI/CD"],
-    "featured": true
+    "featured": false
   }
   ,
   {
@@ -94,6 +94,28 @@
     "link": "",
     "repo": "https://github.com/MGhaith/Static-Site-Server",
     "technologies": ["AWS", "Rsync", "SSH", "linux", "Nginx", "Bash"],
+    "featured": false
+  }
+  ,
+  {
+    "projectId": "010",
+    "title": "Configuration Management",
+    "description": "Configure a Linux server with an Ansible playbook.",
+    "content": "Configured a Linux server using Ansible playbooks, automating tasks such as package installation, service management, and user configuration.",
+    "link": "",
+    "repo": "https://github.com/MGhaith/Configuration-Management-Ansible",
+    "technologies": ["AWS", "Ansible", "SSH", "linux", "Nginx"],
+    "featured": true
+  }
+  ,
+  {
+    "projectId": "011",
+    "title": "Node.js Service Deployment",
+    "description": "Deploy a Node.js service to a remote server using GitHub Actions, Ansible, and Terraform.",
+    "content": "Deployed a Node.js service to a remote server using GitHub Actions, Ansible, and Terraform. The project showcases DevOps practices with CI/CD, version control, and automated deployment.",
+    "link": "",
+    "repo": "https://github.com/MGhaith/Nodejs-Service-Deployment",
+    "technologies": ["AWS", "GitHub Actions", "Ansible", "Terraform", "SSH", "linux", "Node.js"],
     "featured": true
   }
 ]

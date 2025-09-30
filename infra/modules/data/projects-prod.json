@@ -118,4 +118,15 @@
     "technologies": ["AWS", "GitHub Actions", "Ansible", "Terraform", "SSH", "linux", "Node.js"],
     "featured": true
   }
+  ,
+  {
+    "projectId": "012",
+    "title": "Dockerized Service",
+    "description": "Deploy a Dockerized Node.js Service using GitHub Actions and Terraform.",
+    "content": "Deployed a Dockerized Node.js Service to a remote AWS EC2 Instance using GitHub Actions and Terraform. The project showcases automated deployment with CI/CD, version control, and DevOps practices.",
+    "link": "",
+    "repo": "https://github.com/MGhaith/Dockerized-Service",
+    "technologies": ["AWS", "GitHub Actions", "Docker", "Terraform", "SSH", "linux", "Node.js"],
+    "featured": true
+  }
 ]

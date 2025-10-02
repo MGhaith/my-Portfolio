@@ -129,4 +129,15 @@
     "technologies": ["AWS", "GitHub Actions", "Docker", "Terraform", "SSH", "linux", "Node.js"],
     "featured": true
   }
+  ,
+  {
+    "projectId": "013",
+    "title": "Multi-Container Application",
+    "description": "Deploy a multi-container application using Docker Compose.",
+    "content": "Deployed a multi-container application using Docker Compose with infrastructure provisioned by Terraform, server configuration managed by Ansible, and automated CI/CD via GitHub Actions.",
+    "link": "",
+    "repo": "https://github.com/MGhaith/Multi-Container-Application",
+    "technologies": ["AWS", "GitHub Actions", "Docker", "Ansible", "Terraform", "SSH", "linux", "Node.js"],
+    "featured": true
+  }
 ]

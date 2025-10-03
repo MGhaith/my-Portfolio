@@ -140,4 +140,15 @@
     "technologies": ["AWS", "GitHub Actions", "Docker", "Ansible", "Terraform", "SSH", "linux", "Node.js"],
     "featured": true
   }
+  ,
+  {
+    "projectId": "014",
+    "title": "Bastion Host",
+    "description": "Setup a bastion host for managing access to private infrastructure.",
+    "content": "This project demonstrates how to configure a bastion host in AWS to securely access private infrastructure. The infrastructure is provisioned using Terraform, and the bastion host is configured using Ansible.",
+    "link": "",
+    "repo": "https://github.com/MGhaith/Bastion-Host",
+    "technologies": ["AWS", "Ansible", "Terraform", "SSH", "linux"],
+    "featured": false
+  }
 ]

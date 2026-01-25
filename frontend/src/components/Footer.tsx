@@ -1,47 +1,41 @@
-import { Github, Linkedin } from "lucide-react";
+import { Github, Linkedin, Twitter, Mail } from "lucide-react";
 
 export default function Footer() {
+  const currentYear = new Date().getFullYear();
+
   return (
-    <footer className="border-t py-6 md:py-8">
-      <div className="container mx-auto flex flex-col items-center justify-center gap-4">
-        <p className="text-center text-sm text-gray-500 dark:text-gray-400">
-          © {new Date().getFullYear()} <span className="text-primary">Ghaith Magherbi</span>. All rights reserved.
-        </p>
-        <div className="flex gap-4">
-          <a 
-            href="https://github.com/MGhaith" 
-            target="_blank" 
-            rel="noopener noreferrer"
-            className="text-gray-500 hover:text-gray-700 dark:text-gray-400 dark:hover:text-gray-300"
-          >
-            <Github className="h-5 w-5" />
+    <footer className="w-full py-8 mt-auto border-t border-white/5 bg-background/50 backdrop-blur-md">
+      <div className="container mx-auto px-4 flex flex-col md:flex-row items-center justify-between gap-4">
+        <div className="flex flex-col items-center md:items-start">
+          <span className="text-lg font-display font-bold text-foreground">
+            Ghaith<span className="text-primary">.dev</span>
+          </span>
+          <p className="text-sm text-muted-foreground mt-1">
+            Built with React, Tailwind & Love.
+          </p>
+        </div>
+
+        <div className="flex items-center gap-6">
+          <a href="#" className="text-muted-foreground hover:text-primary transition-colors hover:scale-110 transform duration-200">
+            <Github size={20} />
             <span className="sr-only">GitHub</span>
           </a>
-          <a 
-            href="https://www.linkedin.com/in/ghaith-magherbi/" 
-            target="_blank" 
-            rel="noopener noreferrer"
-            className="text-gray-500 hover:text-gray-700 dark:text-gray-400 dark:hover:text-gray-300"
-          >
-            <Linkedin className="h-5 w-5" />
+          <a href="#" className="text-muted-foreground hover:text-primary transition-colors hover:scale-110 transform duration-200">
+            <Linkedin size={20} />
             <span className="sr-only">LinkedIn</span>
           </a>
-          {/*<a 
-            href="https://twitter.com/yourusername" 
-            target="_blank" 
-            rel="noopener noreferrer"
-            className="text-gray-500 hover:text-gray-700 dark:text-gray-400 dark:hover:text-gray-300"
-          >
-            <Twitter className="h-5 w-5" />
+          <a href="#" className="text-muted-foreground hover:text-primary transition-colors hover:scale-110 transform duration-200">
+            <Twitter size={20} />
             <span className="sr-only">Twitter</span>
           </a>
-          <a 
-            href="mailto:contact@ghaith-magherbi.com" 
-            className="text-gray-500 hover:text-gray-700 dark:text-gray-400 dark:hover:text-gray-300"
-          >
-            <Mail className="h-5 w-5" />
+          <a href="mailto:ghaith@example.com" className="text-muted-foreground hover:text-primary transition-colors hover:scale-110 transform duration-200">
+            <Mail size={20} />
             <span className="sr-only">Email</span>
-          </a>*/}
+          </a>
+        </div>
+
+        <div className="text-xs text-muted-foreground">
+          &copy; {currentYear} Ghaith Magherbi. All rights reserved.
         </div>
       </div>
     </footer>
